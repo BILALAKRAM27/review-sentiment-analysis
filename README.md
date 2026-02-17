@@ -112,10 +112,3 @@ Works on all modern browsers:
 - Machine learning models
 - Multi-language support
 
-## License
-
-Free to use and modify.
-
----
-
-**Built with ❤️ using Advanced NLP Sentiment Analysis**
