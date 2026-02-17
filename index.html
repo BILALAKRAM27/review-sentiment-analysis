@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Review Sentiment Analysis - Analyze customer and vendor reviews using NLP to extract sentiment, key complaints, and praises">
+    <title>Review Sentiment Analysis ⭐</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">⭐</span>
+                    Review Sentiment Analysis
+                </h1>
+                <p class="tagline">AI-Powered Review Intelligence</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="section-header">
+                    <h2>Analyze Reviews</h2>
+                    <p>Paste customer reviews below or load sample data to get started</p>
+                </div>
+
+                <div class="input-container">
+                    <!-- Quick Add Review -->
+                    <div class="quick-add">
+                        <input 
+                            type="text" 
+                            id="reviewInput" 
+                            placeholder="Quick add: Type a review and press Enter..."
+                            class="review-input"
+                        >
+                        <button id="addReviewBtn" class="btn btn-secondary">
+                            <span>Add</span>
+                        </button>
+                    </div>
+
+                    <!-- Bulk Reviews Input -->
+                    <textarea 
+                        id="reviewsInput" 
+                        placeholder="Paste multiple reviews here (separate each review with a blank line)..."
+                        rows="10"
+                        class="reviews-textarea"
+                    ></textarea>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button id="analyzeBtn" class="btn btn-primary">
+                            <span>🔍 Analyze Reviews</span>
+                        </button>
+                        <button id="loadSampleBtn" class="btn btn-secondary">
+                            <span>📝 Load Sample Data</span>
+                        </button>
+                        <button id="clearBtn" class="btn btn-outline">
+                            <span>🗑️ Clear</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results" class="results-section hidden">
+                <!-- Overall Sentiment -->
+                <div class="results-header fade-in">
+                    <div class="overall-card">
+                        <h3>Overall Sentiment</h3>
+                        <div class="overall-content">
+                            <span id="overallSentiment" class="sentiment-badge positive">POSITIVE</span>
+                            <p class="review-count">Based on <span id="totalReviews">0</span> reviews</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Distribution -->
+                <div class="distribution-section fade-in">
+                    <h3 class="section-title">Sentiment Distribution</h3>
+                    <div class="distribution-grid">
+                        <div class="distribution-card positive">
+                            <div class="distribution-icon">😊</div>
+                            <div class="distribution-content">
+                                <span class="distribution-label">Positive</span>
+                                <span id="positivePercent" class="distribution-value">0%</span>
+                            </div>
+                            <div class="distribution-bar">
+                                <div id="positiveBar" class="bar-fill positive"></div>
+                            </div>
+                        </div>
+
+                        <div class="distribution-card neutral">
+                            <div class="distribution-icon">😐</div>
+                            <div class="distribution-content">
+                                <span class="distribution-label">Neutral</span>
+                                <span id="neutralPercent" class="distribution-value">0%</span>
+                            </div>
+                            <div class="distribution-bar">
+                                <div id="neutralBar" class="bar-fill neutral"></div>
+                            </div>
+                        </div>
+
+                        <div class="distribution-card negative">
+                            <div class="distribution-icon">😞</div>
+                            <div class="distribution-content">
+                                <span class="distribution-label">Negative</span>
+                                <span id="negativePercent" class="distribution-value">0%</span>
+                            </div>
+                            <div class="distribution-bar">
+                                <div id="negativeBar" class="bar-fill negative"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Insights -->
+                <div class="insights-section fade-in">
+                    <h3 class="section-title">Key Insights</h3>
+                    <div id="insightsContainer" class="insights-grid">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Aspect Analysis -->
+                <div class="aspects-section fade-in">
+                    <h3 class="section-title">Aspect-Based Analysis</h3>
+                    <div id="aspectsContainer" class="aspects-grid">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Detailed Feedback -->
+                <div class="feedback-section fade-in">
+                    <div class="feedback-grid">
+                        <div class="feedback-card complaints">
+                            <h3 class="feedback-title">
+                                <span class="feedback-icon">⚠️</span>
+                                Top Complaints
+                            </h3>
+                            <ul id="complaintsList" class="feedback-list">
+                                <!-- Dynamically populated -->
+                            </ul>
+                        </div>
+
+                        <div class="feedback-card praises">
+                            <h3 class="feedback-title">
+                                <span class="feedback-icon">✨</span>
+                                Top Praises
+                            </h3>
+                            <ul id="praisesList" class="feedback-list">
+                                <!-- Dynamically populated -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Powered by Advanced NLP Sentiment Analysis</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="sample-data.js"></script>
+    <script src="sentiment-analyzer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
